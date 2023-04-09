@@ -1,0 +1,1590 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ExchangeDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AccessLevels">
+          <Key>
+            <PropertyRef Name="PageId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="PageId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Banks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Currencies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="DetailsTickets">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SupportReplied" Type="bit" Nullable="false" />
+          <Property Name="AttachedFileName" Type="nvarchar(max)" />
+          <Property Name="Text" Type="nvarchar(max)" />
+          <Property Name="TicketId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Documents">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="FileName" Type="nvarchar(max)" />
+          <Property Name="Extention" Type="nvarchar(max)" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="Category" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="ApplicationUser_Id" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ErrorMessages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateError" Type="datetime" Nullable="false" />
+          <Property Name="Message" Type="nvarchar(max)" />
+          <Property Name="InnerException" Type="nvarchar(max)" />
+          <Property Name="FileName" Type="nvarchar(max)" />
+          <Property Name="MethodName" Type="nvarchar(max)" />
+          <Property Name="Line" Type="int" Nullable="false" />
+          <Property Name="Col" Type="int" Nullable="false" />
+          <Property Name="StackTrace" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Levels">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="UserDailyLimit" Type="int" />
+          <Property Name="AutoSend" Type="bit" Nullable="false" />
+          <Property Name="ActivePayments" Type="bit" Nullable="false" />
+          <Property Name="MaximumLevelTransaction" Type="int" />
+        </EntityType>
+        <EntityType Name="LogForSignalrs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserLog" Type="int" Nullable="false" />
+          <Property Name="TransactionLog" Type="int" Nullable="false" />
+          <Property Name="DocumentLog" Type="int" Nullable="false" />
+          <Property Name="UserBankCardLog" Type="int" Nullable="false" />
+          <Property Name="WithdrawLog" Type="int" Nullable="false" />
+          <Property Name="VoucherLog" Type="int" Nullable="false" />
+          <Property Name="TicketLog" Type="int" Nullable="false" />
+          <Property Name="TetherLog" Type="int" Nullable="false" />
+          <Property Name="VoucherWithoutAuthentication" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Logs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="LogType" Type="int" Nullable="false" />
+          <Property Name="IP" Type="nvarchar(max)" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Messages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Text" Type="nvarchar(max)" />
+          <Property Name="Count" Type="int" Nullable="false" />
+          <Property Name="Page" Type="nvarchar(max)" />
+          <Property Name="ExpireDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Notifications">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="200" />
+          <Property Name="Url" Type="nvarchar(max)" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Seen" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Link" Type="nvarchar" MaxLength="128" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="Icon" Type="nvarchar" MaxLength="128" />
+          <Property Name="BeShow" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PaymentServices">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="CurrencyID" Type="int" Nullable="false" />
+          <Property Name="Unit" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="BuyPrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="SellPrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="MinimumBuyVolume" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="MinimumSellVolume" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="IsDisabled" Type="bit" Nullable="false" />
+          <Property Name="TransactionFee" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PostHistories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PriceHistories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BuyPrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="SellPrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="PaymentServiceId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RefralCommisions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Percent" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="RefralType" Type="int" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="IsMultiple" Type="bit" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="256" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SellVoucherWithoutAuthentications">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Serial" Type="nvarchar(max)" />
+          <Property Name="ActivationCode" Type="nvarchar(max)" />
+          <Property Name="Volume" Type="float" Nullable="false" />
+          <Property Name="BatchNum" Type="nvarchar(max)" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CardNumber" Type="nvarchar(max)" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="TotalPrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="StatusPayment" Type="int" Nullable="false" />
+          <Property Name="Try" Type="int" />
+          <Property Name="SMS" Type="bit" />
+          <Property Name="Bot" Type="bit" />
+        </EntityType>
+        <EntityType Name="Settings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SendUserAuthenticationDocumentsText" Type="nvarchar(max)" />
+          <Property Name="HelpPage" Type="nvarchar(max)" />
+          <Property Name="SupportPhone" Type="nvarchar" MaxLength="15" />
+          <Property Name="MinimumAmountWithdraw" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="MobileConfirmCodeExpireMinutes" Type="int" Nullable="false" />
+          <Property Name="EmailConfirmCodeExpireMinutes" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TblStates">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tethers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Amount" Type="float" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="PurchasePrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Txid" Type="nvarchar(max)" />
+          <Property Name="CryptoWalletId" Type="int" />
+        </EntityType>
+        <EntityType Name="Tickets">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Text" Type="nvarchar(max)" />
+          <Property Name="TicketStatus" Type="int" Nullable="false" />
+          <Property Name="TicketCategory" Type="int" Nullable="false" />
+          <Property Name="DateUpdate" Type="datetime" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Transactions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TransactionGuid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UnitPrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Volume" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TotalPrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="TransactionType" Type="int" Nullable="false" />
+          <Property Name="PaymentWay" Type="int" />
+          <Property Name="RefrenceId" Type="nvarchar(max)" />
+          <Property Name="ReciveType" Type="int" />
+          <Property Name="SaleType" Type="int" />
+          <Property Name="PaymentBatchNum" Type="int" Nullable="false" />
+          <Property Name="ReciveWalletAddress" Type="nvarchar(max)" />
+          <Property Name="VoucherActivationCode" Type="nvarchar(max)" />
+          <Property Name="VoucherSerial" Type="nvarchar(max)" />
+          <Property Name="WalleteId" Type="int" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="PaymentServiceId" Type="int" />
+          <Property Name="UserBankCardId" Type="int" />
+          <Property Name="VoucherId" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="TetherId" Type="int" />
+          <Property Name="PercentCommision" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ReferTransactionId" Type="int" />
+        </EntityType>
+        <EntityType Name="UserBankCards">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountNumber" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CardNumber" Type="nvarchar" MaxLength="16" Nullable="false" />
+          <Property Name="Shaba" Type="nvarchar" MaxLength="26" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="BankID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="FirstSeprateCardNumber" Type="nvarchar(max)" />
+          <Property Name="LastSeprateCardNumber" Type="nvarchar(max)" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="UserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="40" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="40" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="LastLoggedIn" Type="datetime" />
+          <Property Name="TblState_Id" Type="int" />
+          <Property Name="RoleId" Type="int" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="NationalCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="Password" Type="nvarchar" MaxLength="256" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="MobileIsConfirmed" Type="bit" Nullable="false" />
+          <Property Name="ReferId" Type="nvarchar" MaxLength="15" />
+          <Property Name="ReferIdMe" Type="nvarchar" MaxLength="15" />
+          <Property Name="LastWithdraw" Type="datetime" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="12" />
+          <Property Name="IsDisabled" Type="bit" Nullable="false" />
+          <Property Name="TotalUserLevelTransaction" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="VerifiedDocumentID" Type="int" />
+          <Property Name="LevelID" Type="int" />
+          <Property Name="PercentageCommission" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="UpdateUserCookieInNextRequest" Type="bit" Nullable="false" />
+          <Property Name="SignalRHubId" Type="nvarchar(max)" />
+          <Property Name="LastSignalRConnected" Type="datetime" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="OldId" Type="int" Nullable="false" />
+          <Property Name="PublicMessageCount" Type="int" />
+          <Property Name="LastMessageId" Type="int" />
+          <Property Name="ProviderKey" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="UserSms">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProviderName" Type="nvarchar" MaxLength="40" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="12" />
+          <Property Name="Text" Type="nvarchar(max)" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserVerifyTokens">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Value" Type="nvarchar(max)" />
+          <Property Name="TokenType" Type="int" Nullable="false" />
+          <Property Name="ExpireUnixTime" Type="bigint" Nullable="false" />
+          <Property Name="Target" Type="nvarchar" MaxLength="256" />
+          <Property Name="NumberOfUnsuccessfulAttempts" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserWallets">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="WalletAddress" Type="nvarchar(max)" />
+          <Property Name="WalletBalance" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vouchers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Serial" Type="nvarchar(max)" />
+          <Property Name="ActivationCode" Type="nvarchar(max)" />
+          <Property Name="Volume" Type="float" Nullable="false" />
+          <Property Name="PaymentServiceId" Type="int" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="BatchNum" Type="nvarchar(max)" />
+          <Property Name="VoucherType" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WithdrawDocuments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WithdrawId" Type="int" Nullable="false" />
+          <Property Name="DocumentId" Type="int" />
+        </EntityType>
+        <EntityType Name="Withdraws">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="UserBankCardId" Type="int" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="ApprovedDate" Type="datetime" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="Try" Type="int" />
+          <Property Name="SMS" Type="bit" />
+          <Property Name="Bot" Type="bit" />
+        </EntityType>
+        <Association Name="FK_dbo_PriceHistories_dbo_PaymentServices_PaymentServiceId">
+          <End Role="PaymentServices" Type="Self.PaymentServices" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PriceHistories" Type="Self.PriceHistories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentServices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PriceHistories">
+              <PropertyRef Name="PaymentServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Tethers_dbo_Users_UserId">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Tethers" Type="Self.Tethers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tethers">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Transactions_dbo_Tethers_TetherId">
+          <End Role="Tethers" Type="Self.Tethers" Multiplicity="0..1" />
+          <End Role="Transactions" Type="Self.Transactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tethers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Transactions">
+              <PropertyRef Name="TetherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ExchangeDBModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccessLevels" EntityType="Self.AccessLevels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Banks" EntityType="Self.Banks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Currencies" EntityType="Self.Currencies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetailsTickets" EntityType="Self.DetailsTickets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Documents" EntityType="Self.Documents" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ErrorMessages" EntityType="Self.ErrorMessages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Levels" EntityType="Self.Levels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LogForSignalrs" EntityType="Self.LogForSignalrs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Logs" EntityType="Self.Logs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Messages" EntityType="Self.Messages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notifications" EntityType="Self.Notifications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pages" EntityType="Self.Pages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentServices" EntityType="Self.PaymentServices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PostHistories" EntityType="Self.PostHistories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PriceHistories" EntityType="Self.PriceHistories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RefralCommisions" EntityType="Self.RefralCommisions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SellVoucherWithoutAuthentications" EntityType="Self.SellVoucherWithoutAuthentications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Settings" EntityType="Self.Settings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblStates" EntityType="Self.TblStates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tethers" EntityType="Self.Tethers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tickets" EntityType="Self.Tickets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Transactions" EntityType="Self.Transactions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserBankCards" EntityType="Self.UserBankCards" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserClaims" EntityType="Self.UserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserLogins" EntityType="Self.UserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserSms" EntityType="Self.UserSms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserVerifyTokens" EntityType="Self.UserVerifyTokens" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserWallets" EntityType="Self.UserWallets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vouchers" EntityType="Self.Vouchers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WithdrawDocuments" EntityType="Self.WithdrawDocuments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Withdraws" EntityType="Self.Withdraws" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_PriceHistories_dbo_PaymentServices_PaymentServiceId" Association="Self.FK_dbo_PriceHistories_dbo_PaymentServices_PaymentServiceId">
+            <End Role="PaymentServices" EntitySet="PaymentServices" />
+            <End Role="PriceHistories" EntitySet="PriceHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Tethers_dbo_Users_UserId" Association="Self.FK_dbo_Tethers_dbo_Users_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Tethers" EntitySet="Tethers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Transactions_dbo_Tethers_TetherId" Association="Self.FK_dbo_Transactions_dbo_Tethers_TetherId">
+            <End Role="Tethers" EntitySet="Tethers" />
+            <End Role="Transactions" EntitySet="Transactions" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ExchangeDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Currency">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="ExchangeDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Currencies" EntityType="Self.Currency" />
+          <EntitySet Name="PaymentServices" EntityType="ExchangeDBModel.PaymentService" />
+          <EntitySet Name="C__MigrationHistory" EntityType="ExchangeDBModel.C__MigrationHistory" />
+          <EntitySet Name="AccessLevels" EntityType="ExchangeDBModel.AccessLevel" />
+          <EntitySet Name="Banks" EntityType="ExchangeDBModel.Bank" />
+          <EntitySet Name="DetailsTickets" EntityType="ExchangeDBModel.DetailsTicket" />
+          <EntitySet Name="Documents" EntityType="ExchangeDBModel.Document" />
+          <EntitySet Name="ErrorMessages" EntityType="ExchangeDBModel.ErrorMessage" />
+          <EntitySet Name="Levels" EntityType="ExchangeDBModel.Level" />
+          <EntitySet Name="LogForSignalrs" EntityType="ExchangeDBModel.LogForSignalr" />
+          <EntitySet Name="Logs" EntityType="ExchangeDBModel.Log" />
+          <EntitySet Name="Messages" EntityType="ExchangeDBModel.Message" />
+          <EntitySet Name="Notifications" EntityType="ExchangeDBModel.Notification" />
+          <EntitySet Name="Pages" EntityType="ExchangeDBModel.Page" />
+          <EntitySet Name="PostHistories" EntityType="ExchangeDBModel.PostHistory" />
+          <EntitySet Name="RefralCommisions" EntityType="ExchangeDBModel.RefralCommision" />
+          <EntitySet Name="Roles" EntityType="ExchangeDBModel.Role" />
+          <EntitySet Name="SellVoucherWithoutAuthentications" EntityType="ExchangeDBModel.SellVoucherWithoutAuthentication" />
+          <EntitySet Name="Settings" EntityType="ExchangeDBModel.Setting" />
+          <EntitySet Name="TblStates" EntityType="ExchangeDBModel.TblState" />
+          <EntitySet Name="Tethers" EntityType="ExchangeDBModel.Tether" />
+          <EntitySet Name="Tickets" EntityType="ExchangeDBModel.Ticket" />
+          <EntitySet Name="Transactions" EntityType="ExchangeDBModel.Transaction" />
+          <EntitySet Name="UserBankCards" EntityType="ExchangeDBModel.UserBankCard" />
+          <EntitySet Name="UserClaims" EntityType="ExchangeDBModel.UserClaim" />
+          <EntitySet Name="UserLogins" EntityType="ExchangeDBModel.UserLogin" />
+          <EntitySet Name="UserRoles" EntityType="ExchangeDBModel.UserRole" />
+          <EntitySet Name="Users" EntityType="ExchangeDBModel.User" />
+          <EntitySet Name="UserSms" EntityType="ExchangeDBModel.UserSm" />
+          <EntitySet Name="UserVerifyTokens" EntityType="ExchangeDBModel.UserVerifyToken" />
+          <EntitySet Name="UserWallets" EntityType="ExchangeDBModel.UserWallet" />
+          <EntitySet Name="Vouchers" EntityType="ExchangeDBModel.Voucher" />
+          <EntitySet Name="WithdrawDocuments" EntityType="ExchangeDBModel.WithdrawDocument" />
+          <EntitySet Name="Withdraws" EntityType="ExchangeDBModel.Withdraw" />
+          <AssociationSet Name="FK_dbo_Tethers_dbo_Users_UserId" Association="ExchangeDBModel.FK_dbo_Tethers_dbo_Users_UserId">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Tether" EntitySet="Tethers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Transactions_dbo_Tethers_TetherId" Association="ExchangeDBModel.FK_dbo_Transactions_dbo_Tethers_TetherId">
+            <End Role="Tether" EntitySet="Tethers" />
+            <End Role="Transaction" EntitySet="Transactions" />
+          </AssociationSet>
+          <EntitySet Name="PriceHistories" EntityType="ExchangeDBModel.PriceHistory" />
+          <AssociationSet Name="FK_dbo_PriceHistories_dbo_PaymentServices_PaymentServiceId" Association="ExchangeDBModel.FK_dbo_PriceHistories_dbo_PaymentServices_PaymentServiceId">
+            <End Role="PaymentService" EntitySet="PaymentServices" />
+            <End Role="PriceHistory" EntitySet="PriceHistories" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="PaymentService">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="CurrencyID" Type="Int32" Nullable="false" />
+          <Property Name="Unit" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="BuyPrice" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="SellPrice" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="MinimumBuyVolume" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="MinimumSellVolume" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="IsDisabled" Type="Boolean" Nullable="false" />
+          <Property Name="TransactionFee" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <NavigationProperty Name="PriceHistories" Relationship="ExchangeDBModel.FK_dbo_PriceHistories_dbo_PaymentServices_PaymentServiceId" FromRole="PaymentService" ToRole="PriceHistory" />
+        </EntityType>
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AccessLevel">
+          <Key>
+            <PropertyRef Name="PageId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="PageId" Type="Int32" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Bank">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DetailsTicket">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SupportReplied" Type="Boolean" Nullable="false" />
+          <Property Name="AttachedFileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TicketId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Extention" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="Category" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="ApplicationUser_Id" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="ErrorMessage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateError" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="InnerException" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MethodName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Line" Type="Int32" Nullable="false" />
+          <Property Name="Col" Type="Int32" Nullable="false" />
+          <Property Name="StackTrace" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Level">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserDailyLimit" Type="Int32" />
+          <Property Name="AutoSend" Type="Boolean" Nullable="false" />
+          <Property Name="ActivePayments" Type="Boolean" Nullable="false" />
+          <Property Name="MaximumLevelTransaction" Type="Int32" />
+        </EntityType>
+        <EntityType Name="LogForSignalr">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserLog" Type="Int32" Nullable="false" />
+          <Property Name="TransactionLog" Type="Int32" Nullable="false" />
+          <Property Name="DocumentLog" Type="Int32" Nullable="false" />
+          <Property Name="UserBankCardLog" Type="Int32" Nullable="false" />
+          <Property Name="WithdrawLog" Type="Int32" Nullable="false" />
+          <Property Name="VoucherLog" Type="Int32" Nullable="false" />
+          <Property Name="TicketLog" Type="Int32" Nullable="false" />
+          <Property Name="TetherLog" Type="Int32" Nullable="false" />
+          <Property Name="VoucherWithoutAuthentication" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="LogType" Type="Int32" Nullable="false" />
+          <Property Name="IP" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Count" Type="Int32" Nullable="false" />
+          <Property Name="Page" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ExpireDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Notification">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="Text" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="Seen" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Page">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Link" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ParentId" Type="Int32" />
+          <Property Name="Icon" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="BeShow" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PostHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="RefralCommision">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Percent" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="RefralType" Type="Int32" Nullable="false" />
+          <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentId" Type="Int32" />
+          <Property Name="IsMultiple" Type="Boolean" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SellVoucherWithoutAuthentication">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Serial" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ActivationCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Volume" Type="Double" Nullable="false" />
+          <Property Name="BatchNum" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CardNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="TotalPrice" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="StatusPayment" Type="Int32" Nullable="false" />
+          <Property Name="Try" Type="Int32" />
+          <Property Name="SMS" Type="Boolean" />
+          <Property Name="Bot" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Setting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SendUserAuthenticationDocumentsText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HelpPage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SupportPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="MinimumAmountWithdraw" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="MobileConfirmCodeExpireMinutes" Type="Int32" Nullable="false" />
+          <Property Name="EmailConfirmCodeExpireMinutes" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TblState">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Tether">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Double" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="PurchasePrice" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="Txid" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="ExchangeDBModel.FK_dbo_Tethers_dbo_Users_UserId" FromRole="Tether" ToRole="User" />
+          <NavigationProperty Name="Transactions" Relationship="ExchangeDBModel.FK_dbo_Transactions_dbo_Tethers_TetherId" FromRole="Tether" ToRole="Transaction" />
+          <Property Name="CryptoWalletId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TicketStatus" Type="Int32" Nullable="false" />
+          <Property Name="TicketCategory" Type="Int32" Nullable="false" />
+          <Property Name="DateUpdate" Type="DateTime" Precision="3" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Transaction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TransactionGuid" Type="Guid" Nullable="false" />
+          <Property Name="UnitPrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Volume" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TotalPrice" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="TransactionType" Type="Int32" Nullable="false" />
+          <Property Name="PaymentWay" Type="Int32" />
+          <Property Name="RefrenceId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ReciveType" Type="Int32" />
+          <Property Name="SaleType" Type="Int32" />
+          <Property Name="PaymentBatchNum" Type="Int32" Nullable="false" />
+          <Property Name="ReciveWalletAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="VoucherActivationCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="VoucherSerial" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WalleteId" Type="Int32" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="PaymentServiceId" Type="Int32" />
+          <Property Name="UserBankCardId" Type="Int32" />
+          <Property Name="VoucherId" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TetherId" Type="Int32" />
+          <Property Name="PercentCommision" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ReferTransactionId" Type="Int32" />
+          <NavigationProperty Name="Tether" Relationship="ExchangeDBModel.FK_dbo_Transactions_dbo_Tethers_TetherId" FromRole="Transaction" ToRole="Tether" />
+        </EntityType>
+        <EntityType Name="UserBankCard">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountNumber" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CardNumber" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="Shaba" Type="String" Nullable="false" MaxLength="26" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="BankID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="FirstSeprateCardNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastSeprateCardNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="UserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastLoggedIn" Type="DateTime" Precision="3" />
+          <Property Name="TblState_Id" Type="Int32" />
+          <Property Name="RoleId" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="NationalCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="MobileIsConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="ReferId" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="ReferIdMe" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="LastWithdraw" Type="DateTime" Precision="3" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="IsDisabled" Type="Boolean" Nullable="false" />
+          <Property Name="TotalUserLevelTransaction" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="VerifiedDocumentID" Type="Int32" />
+          <Property Name="LevelID" Type="Int32" />
+          <Property Name="PercentageCommission" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="UpdateUserCookieInNextRequest" Type="Boolean" Nullable="false" />
+          <Property Name="SignalRHubId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastSignalRConnected" Type="DateTime" Precision="3" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="OldId" Type="Int32" Nullable="false" />
+          <Property Name="PublicMessageCount" Type="Int32" />
+          <Property Name="LastMessageId" Type="Int32" />
+          <Property Name="ProviderKey" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tethers" Relationship="ExchangeDBModel.FK_dbo_Tethers_dbo_Users_UserId" FromRole="User" ToRole="Tether" />
+        </EntityType>
+        <EntityType Name="UserSm">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProviderName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserVerifyToken">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TokenType" Type="Int32" Nullable="false" />
+          <Property Name="ExpireUnixTime" Type="Int64" Nullable="false" />
+          <Property Name="Target" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="NumberOfUnsuccessfulAttempts" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserWallet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="WalletAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WalletBalance" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Voucher">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Serial" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ActivationCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Volume" Type="Double" Nullable="false" />
+          <Property Name="PaymentServiceId" Type="Int32" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="BatchNum" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="VoucherType" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="WithdrawDocument">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WithdrawId" Type="Int32" Nullable="false" />
+          <Property Name="DocumentId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Withdraw">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="UserBankCardId" Type="Int32" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ApprovedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Try" Type="Int32" />
+          <Property Name="SMS" Type="Boolean" />
+          <Property Name="Bot" Type="Boolean" />
+        </EntityType>
+        <Association Name="FK_dbo_Tethers_dbo_Users_UserId">
+          <End Type="ExchangeDBModel.User" Role="User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ExchangeDBModel.Tether" Role="Tether" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tether">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Transactions_dbo_Tethers_TetherId">
+          <End Type="ExchangeDBModel.Tether" Role="Tether" Multiplicity="0..1" />
+          <End Type="ExchangeDBModel.Transaction" Role="Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tether">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Transaction">
+              <PropertyRef Name="TetherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PriceHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BuyPrice" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="SellPrice" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PaymentServiceId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PaymentService" Relationship="ExchangeDBModel.FK_dbo_PriceHistories_dbo_PaymentServices_PaymentServiceId" FromRole="PriceHistory" ToRole="PaymentService" />
+        </EntityType>
+        <Association Name="FK_dbo_PriceHistories_dbo_PaymentServices_PaymentServiceId">
+          <End Type="ExchangeDBModel.PaymentService" Role="PaymentService" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ExchangeDBModel.PriceHistory" Role="PriceHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentService">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PriceHistory">
+              <PropertyRef Name="PaymentServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ExchangeDBModelStoreContainer" CdmEntityContainer="ExchangeDBEntities">
+          <EntitySetMapping Name="Currencies">
+            <EntityTypeMapping TypeName="ExchangeDBModel.Currency">
+              <MappingFragment StoreEntitySet="Currencies">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentServices">
+            <EntityTypeMapping TypeName="ExchangeDBModel.PaymentService">
+              <MappingFragment StoreEntitySet="PaymentServices">
+                <ScalarProperty Name="TransactionFee" ColumnName="TransactionFee" />
+                <ScalarProperty Name="IsDisabled" ColumnName="IsDisabled" />
+                <ScalarProperty Name="MinimumSellVolume" ColumnName="MinimumSellVolume" />
+                <ScalarProperty Name="MinimumBuyVolume" ColumnName="MinimumBuyVolume" />
+                <ScalarProperty Name="SellPrice" ColumnName="SellPrice" />
+                <ScalarProperty Name="BuyPrice" ColumnName="BuyPrice" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="CurrencyID" ColumnName="CurrencyID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="ExchangeDBModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccessLevels">
+            <EntityTypeMapping TypeName="ExchangeDBModel.AccessLevel">
+              <MappingFragment StoreEntitySet="AccessLevels">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="PageId" ColumnName="PageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Banks">
+            <EntityTypeMapping TypeName="ExchangeDBModel.Bank">
+              <MappingFragment StoreEntitySet="Banks">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetailsTickets">
+            <EntityTypeMapping TypeName="ExchangeDBModel.DetailsTicket">
+              <MappingFragment StoreEntitySet="DetailsTickets">
+                <ScalarProperty Name="TicketId" ColumnName="TicketId" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="AttachedFileName" ColumnName="AttachedFileName" />
+                <ScalarProperty Name="SupportReplied" ColumnName="SupportReplied" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Documents">
+            <EntityTypeMapping TypeName="ExchangeDBModel.Document">
+              <MappingFragment StoreEntitySet="Documents">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ApplicationUser_Id" ColumnName="ApplicationUser_Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Extention" ColumnName="Extention" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ErrorMessages">
+            <EntityTypeMapping TypeName="ExchangeDBModel.ErrorMessage">
+              <MappingFragment StoreEntitySet="ErrorMessages">
+                <ScalarProperty Name="StackTrace" ColumnName="StackTrace" />
+                <ScalarProperty Name="Col" ColumnName="Col" />
+                <ScalarProperty Name="Line" ColumnName="Line" />
+                <ScalarProperty Name="MethodName" ColumnName="MethodName" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="InnerException" ColumnName="InnerException" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="DateError" ColumnName="DateError" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Levels">
+            <EntityTypeMapping TypeName="ExchangeDBModel.Level">
+              <MappingFragment StoreEntitySet="Levels">
+                <ScalarProperty Name="MaximumLevelTransaction" ColumnName="MaximumLevelTransaction" />
+                <ScalarProperty Name="ActivePayments" ColumnName="ActivePayments" />
+                <ScalarProperty Name="AutoSend" ColumnName="AutoSend" />
+                <ScalarProperty Name="UserDailyLimit" ColumnName="UserDailyLimit" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LogForSignalrs">
+            <EntityTypeMapping TypeName="ExchangeDBModel.LogForSignalr">
+              <MappingFragment StoreEntitySet="LogForSignalrs">
+                <ScalarProperty Name="VoucherWithoutAuthentication" ColumnName="VoucherWithoutAuthentication" />
+                <ScalarProperty Name="TetherLog" ColumnName="TetherLog" />
+                <ScalarProperty Name="TicketLog" ColumnName="TicketLog" />
+                <ScalarProperty Name="VoucherLog" ColumnName="VoucherLog" />
+                <ScalarProperty Name="WithdrawLog" ColumnName="WithdrawLog" />
+                <ScalarProperty Name="UserBankCardLog" ColumnName="UserBankCardLog" />
+                <ScalarProperty Name="DocumentLog" ColumnName="DocumentLog" />
+                <ScalarProperty Name="TransactionLog" ColumnName="TransactionLog" />
+                <ScalarProperty Name="UserLog" ColumnName="UserLog" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logs">
+            <EntityTypeMapping TypeName="ExchangeDBModel.Log">
+              <MappingFragment StoreEntitySet="Logs">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="LogType" ColumnName="LogType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Messages">
+            <EntityTypeMapping TypeName="ExchangeDBModel.Message">
+              <MappingFragment StoreEntitySet="Messages">
+                <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
+                <ScalarProperty Name="Page" ColumnName="Page" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notifications">
+            <EntityTypeMapping TypeName="ExchangeDBModel.Notification">
+              <MappingFragment StoreEntitySet="Notifications">
+                <ScalarProperty Name="Seen" ColumnName="Seen" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pages">
+            <EntityTypeMapping TypeName="ExchangeDBModel.Page">
+              <MappingFragment StoreEntitySet="Pages">
+                <ScalarProperty Name="BeShow" ColumnName="BeShow" />
+                <ScalarProperty Name="Icon" ColumnName="Icon" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PostHistories">
+            <EntityTypeMapping TypeName="ExchangeDBModel.PostHistory">
+              <MappingFragment StoreEntitySet="PostHistories">
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RefralCommisions">
+            <EntityTypeMapping TypeName="ExchangeDBModel.RefralCommision">
+              <MappingFragment StoreEntitySet="RefralCommisions">
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="RefralType" ColumnName="RefralType" />
+                <ScalarProperty Name="Percent" ColumnName="Percent" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="ExchangeDBModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsMultiple" ColumnName="IsMultiple" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SellVoucherWithoutAuthentications">
+            <EntityTypeMapping TypeName="ExchangeDBModel.SellVoucherWithoutAuthentication">
+              <MappingFragment StoreEntitySet="SellVoucherWithoutAuthentications">
+                <ScalarProperty Name="Bot" ColumnName="Bot" />
+                <ScalarProperty Name="SMS" ColumnName="SMS" />
+                <ScalarProperty Name="Try" ColumnName="Try" />
+                <ScalarProperty Name="StatusPayment" ColumnName="StatusPayment" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="BatchNum" ColumnName="BatchNum" />
+                <ScalarProperty Name="Volume" ColumnName="Volume" />
+                <ScalarProperty Name="ActivationCode" ColumnName="ActivationCode" />
+                <ScalarProperty Name="Serial" ColumnName="Serial" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Settings">
+            <EntityTypeMapping TypeName="ExchangeDBModel.Setting">
+              <MappingFragment StoreEntitySet="Settings">
+                <ScalarProperty Name="EmailConfirmCodeExpireMinutes" ColumnName="EmailConfirmCodeExpireMinutes" />
+                <ScalarProperty Name="MobileConfirmCodeExpireMinutes" ColumnName="MobileConfirmCodeExpireMinutes" />
+                <ScalarProperty Name="MinimumAmountWithdraw" ColumnName="MinimumAmountWithdraw" />
+                <ScalarProperty Name="SupportPhone" ColumnName="SupportPhone" />
+                <ScalarProperty Name="HelpPage" ColumnName="HelpPage" />
+                <ScalarProperty Name="SendUserAuthenticationDocumentsText" ColumnName="SendUserAuthenticationDocumentsText" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblStates">
+            <EntityTypeMapping TypeName="ExchangeDBModel.TblState">
+              <MappingFragment StoreEntitySet="TblStates">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tethers">
+            <EntityTypeMapping TypeName="ExchangeDBModel.Tether">
+              <MappingFragment StoreEntitySet="Tethers">
+                <ScalarProperty Name="CryptoWalletId" ColumnName="CryptoWalletId" />
+                <ScalarProperty Name="Txid" ColumnName="Txid" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="PurchasePrice" ColumnName="PurchasePrice" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tickets">
+            <EntityTypeMapping TypeName="ExchangeDBModel.Ticket">
+              <MappingFragment StoreEntitySet="Tickets">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="DateUpdate" ColumnName="DateUpdate" />
+                <ScalarProperty Name="TicketCategory" ColumnName="TicketCategory" />
+                <ScalarProperty Name="TicketStatus" ColumnName="TicketStatus" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transactions">
+            <EntityTypeMapping TypeName="ExchangeDBModel.Transaction">
+              <MappingFragment StoreEntitySet="Transactions">
+                <ScalarProperty Name="ReferTransactionId" ColumnName="ReferTransactionId" />
+                <ScalarProperty Name="PercentCommision" ColumnName="PercentCommision" />
+                <ScalarProperty Name="TetherId" ColumnName="TetherId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="VoucherId" ColumnName="VoucherId" />
+                <ScalarProperty Name="UserBankCardId" ColumnName="UserBankCardId" />
+                <ScalarProperty Name="PaymentServiceId" ColumnName="PaymentServiceId" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="WalleteId" ColumnName="WalleteId" />
+                <ScalarProperty Name="VoucherSerial" ColumnName="VoucherSerial" />
+                <ScalarProperty Name="VoucherActivationCode" ColumnName="VoucherActivationCode" />
+                <ScalarProperty Name="ReciveWalletAddress" ColumnName="ReciveWalletAddress" />
+                <ScalarProperty Name="PaymentBatchNum" ColumnName="PaymentBatchNum" />
+                <ScalarProperty Name="SaleType" ColumnName="SaleType" />
+                <ScalarProperty Name="ReciveType" ColumnName="ReciveType" />
+                <ScalarProperty Name="RefrenceId" ColumnName="RefrenceId" />
+                <ScalarProperty Name="PaymentWay" ColumnName="PaymentWay" />
+                <ScalarProperty Name="TransactionType" ColumnName="TransactionType" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="Volume" ColumnName="Volume" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="TransactionGuid" ColumnName="TransactionGuid" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserBankCards">
+            <EntityTypeMapping TypeName="ExchangeDBModel.UserBankCard">
+              <MappingFragment StoreEntitySet="UserBankCards">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="LastSeprateCardNumber" ColumnName="LastSeprateCardNumber" />
+                <ScalarProperty Name="FirstSeprateCardNumber" ColumnName="FirstSeprateCardNumber" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="BankID" ColumnName="BankID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Shaba" ColumnName="Shaba" />
+                <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserClaims">
+            <EntityTypeMapping TypeName="ExchangeDBModel.UserClaim">
+              <MappingFragment StoreEntitySet="UserClaims">
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserLogins">
+            <EntityTypeMapping TypeName="ExchangeDBModel.UserLogin">
+              <MappingFragment StoreEntitySet="UserLogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoles">
+            <EntityTypeMapping TypeName="ExchangeDBModel.UserRole">
+              <MappingFragment StoreEntitySet="UserRoles">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="ExchangeDBModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LastMessageId" ColumnName="LastMessageId" />
+                <ScalarProperty Name="PublicMessageCount" ColumnName="PublicMessageCount" />
+                <ScalarProperty Name="OldId" ColumnName="OldId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="LastSignalRConnected" ColumnName="LastSignalRConnected" />
+                <ScalarProperty Name="SignalRHubId" ColumnName="SignalRHubId" />
+                <ScalarProperty Name="UpdateUserCookieInNextRequest" ColumnName="UpdateUserCookieInNextRequest" />
+                <ScalarProperty Name="PercentageCommission" ColumnName="PercentageCommission" />
+                <ScalarProperty Name="LevelID" ColumnName="LevelID" />
+                <ScalarProperty Name="VerifiedDocumentID" ColumnName="VerifiedDocumentID" />
+                <ScalarProperty Name="TotalUserLevelTransaction" ColumnName="TotalUserLevelTransaction" />
+                <ScalarProperty Name="IsDisabled" ColumnName="IsDisabled" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="LastWithdraw" ColumnName="LastWithdraw" />
+                <ScalarProperty Name="ReferIdMe" ColumnName="ReferIdMe" />
+                <ScalarProperty Name="ReferId" ColumnName="ReferId" />
+                <ScalarProperty Name="MobileIsConfirmed" ColumnName="MobileIsConfirmed" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="NationalCode" ColumnName="NationalCode" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="TblState_Id" ColumnName="TblState_Id" />
+                <ScalarProperty Name="LastLoggedIn" ColumnName="LastLoggedIn" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserSms">
+            <EntityTypeMapping TypeName="ExchangeDBModel.UserSm">
+              <MappingFragment StoreEntitySet="UserSms">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="ProviderName" ColumnName="ProviderName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserVerifyTokens">
+            <EntityTypeMapping TypeName="ExchangeDBModel.UserVerifyToken">
+              <MappingFragment StoreEntitySet="UserVerifyTokens">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="NumberOfUnsuccessfulAttempts" ColumnName="NumberOfUnsuccessfulAttempts" />
+                <ScalarProperty Name="Target" ColumnName="Target" />
+                <ScalarProperty Name="ExpireUnixTime" ColumnName="ExpireUnixTime" />
+                <ScalarProperty Name="TokenType" ColumnName="TokenType" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserWallets">
+            <EntityTypeMapping TypeName="ExchangeDBModel.UserWallet">
+              <MappingFragment StoreEntitySet="UserWallets">
+                <ScalarProperty Name="WalletBalance" ColumnName="WalletBalance" />
+                <ScalarProperty Name="WalletAddress" ColumnName="WalletAddress" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vouchers">
+            <EntityTypeMapping TypeName="ExchangeDBModel.Voucher">
+              <MappingFragment StoreEntitySet="Vouchers">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="VoucherType" ColumnName="VoucherType" />
+                <ScalarProperty Name="BatchNum" ColumnName="BatchNum" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="PaymentServiceId" ColumnName="PaymentServiceId" />
+                <ScalarProperty Name="Volume" ColumnName="Volume" />
+                <ScalarProperty Name="ActivationCode" ColumnName="ActivationCode" />
+                <ScalarProperty Name="Serial" ColumnName="Serial" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WithdrawDocuments">
+            <EntityTypeMapping TypeName="ExchangeDBModel.WithdrawDocument">
+              <MappingFragment StoreEntitySet="WithdrawDocuments">
+                <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
+                <ScalarProperty Name="WithdrawId" ColumnName="WithdrawId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Withdraws">
+            <EntityTypeMapping TypeName="ExchangeDBModel.Withdraw">
+              <MappingFragment StoreEntitySet="Withdraws">
+                <ScalarProperty Name="Bot" ColumnName="Bot" />
+                <ScalarProperty Name="SMS" ColumnName="SMS" />
+                <ScalarProperty Name="Try" ColumnName="Try" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ApprovedDate" ColumnName="ApprovedDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserBankCardId" ColumnName="UserBankCardId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PriceHistories">
+            <EntityTypeMapping TypeName="ExchangeDBModel.PriceHistory">
+              <MappingFragment StoreEntitySet="PriceHistories">
+                <ScalarProperty Name="PaymentServiceId" ColumnName="PaymentServiceId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="SellPrice" ColumnName="SellPrice" />
+                <ScalarProperty Name="BuyPrice" ColumnName="BuyPrice" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

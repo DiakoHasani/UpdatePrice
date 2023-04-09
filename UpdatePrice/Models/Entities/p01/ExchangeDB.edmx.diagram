@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="20bb57097ef34c97bcdff8fd0e549182" Name="Diagram1">
+        <EntityTypeShape EntityType="ExchangeDBModel.Currency" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExchangeDBModel.PaymentService" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="ExchangeDBModel.C__MigrationHistory" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ExchangeDBModel.AccessLevel" Width="1.5" PointX="5.75" PointY="3.75" />
+        <EntityTypeShape EntityType="ExchangeDBModel.Bank" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ExchangeDBModel.DetailsTicket" Width="1.5" PointX="7.75" PointY="3.75" />
+        <EntityTypeShape EntityType="ExchangeDBModel.Document" Width="1.5" PointX="7.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ExchangeDBModel.ErrorMessage" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ExchangeDBModel.Level" Width="1.5" PointX="9.75" PointY="4.75" />
+        <EntityTypeShape EntityType="ExchangeDBModel.LogForSignalr" Width="1.5" PointX="9.75" PointY="8.75" />
+        <EntityTypeShape EntityType="ExchangeDBModel.Log" Width="1.5" PointX="11.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ExchangeDBModel.Message" Width="1.5" PointX="11.75" PointY="3.75" />
+        <EntityTypeShape EntityType="ExchangeDBModel.Notification" Width="1.5" PointX="11.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ExchangeDBModel.Page" Width="1.5" PointX="11.75" PointY="9.75" />
+        <EntityTypeShape EntityType="ExchangeDBModel.PostHistory" Width="1.5" PointX="7.75" PointY="12.75" />
+        <EntityTypeShape EntityType="ExchangeDBModel.RefralCommision" Width="1.5" PointX="9.75" PointY="12.75" />
+        <EntityTypeShape EntityType="ExchangeDBModel.Role" Width="1.5" PointX="11.75" PointY="12.75" />
+        <EntityTypeShape EntityType="ExchangeDBModel.SellVoucherWithoutAuthentication" Width="1.5" PointX="13.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ExchangeDBModel.Setting" Width="1.5" PointX="2.75" PointY="13.75" />
+        <EntityTypeShape EntityType="ExchangeDBModel.TblState" Width="1.5" PointX="13.75" PointY="4.75" />
+        <EntityTypeShape EntityType="ExchangeDBModel.Tether" Width="1.5" PointX="3" PointY="8" />
+        <EntityTypeShape EntityType="ExchangeDBModel.Ticket" Width="1.5" PointX="4.75" PointY="13.75" />
+        <EntityTypeShape EntityType="ExchangeDBModel.Transaction" Width="1.5" PointX="5.25" PointY="6.625" />
+        <EntityTypeShape EntityType="ExchangeDBModel.UserBankCard" Width="1.5" PointX="13.75" PointY="7.75" />
+        <EntityTypeShape EntityType="ExchangeDBModel.UserClaim" Width="1.5" PointX="13.75" PointY="11.75" />
+        <EntityTypeShape EntityType="ExchangeDBModel.UserLogin" Width="1.5" PointX="13.75" PointY="14.75" />
+        <EntityTypeShape EntityType="ExchangeDBModel.UserRole" Width="1.5" PointX="15.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ExchangeDBModel.User" Width="1.5" PointX="0.75" PointY="5.25" />
+        <EntityTypeShape EntityType="ExchangeDBModel.UserSm" Width="1.5" PointX="15.75" PointY="3.75" />
+        <EntityTypeShape EntityType="ExchangeDBModel.UserVerifyToken" Width="1.5" PointX="15.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ExchangeDBModel.UserWallet" Width="1.5" PointX="6.75" PointY="15.75" />
+        <EntityTypeShape EntityType="ExchangeDBModel.Voucher" Width="1.5" PointX="8.75" PointY="15.75" />
+        <EntityTypeShape EntityType="ExchangeDBModel.WithdrawDocument" Width="1.5" PointX="15.75" PointY="10.75" />
+        <EntityTypeShape EntityType="ExchangeDBModel.Withdraw" Width="1.5" PointX="10.75" PointY="15.75" />
+        <AssociationConnector Association="ExchangeDBModel.FK_dbo_Tethers_dbo_Users_UserId" />
+        <AssociationConnector Association="ExchangeDBModel.FK_dbo_Transactions_dbo_Tethers_TetherId" />
+        <EntityTypeShape EntityType="ExchangeDBModel.PriceHistory" Width="1.5" PointX="5.625" PointY="19.25" />
+        <AssociationConnector Association="ExchangeDBModel.FK_dbo_PriceHistories_dbo_PaymentServices_PaymentServiceId" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
